@@ -13,7 +13,7 @@ Jacked is a Vulnerability Container Image Scanner.
 Copy to clipboard, paste it to the terminal.
 
 ``` curl
-curl -sSfL https://raw.githubusercontent.com/carbonetes/jacked/main/install.sh | sh -s -- -b /usr/local/bin
+curl -sSfL https://raw.githubusercontent.com/jaii041715/jacked/master/install.sh | sh -s -- -b /usr/local/bin
 ```
 ## Usage
 ``` go
