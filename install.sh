@@ -683,6 +683,7 @@ install_asset() (
 
 # entrypoint
 
+
 set +u
 if [ -z "${TEST_INSTALL_SH}" ]; then
   set -u
