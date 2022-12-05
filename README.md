@@ -46,7 +46,7 @@ $ go install .
   - tar.gz
     - linux_amd64.tar.gz
     - linux_arm64.tar.gz
-    -	linux_ppc64le.tar.gz
+    - linux_ppc64le.tar.gz
 - Windows
   - windows_amd64.zip
 
