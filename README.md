@@ -68,8 +68,7 @@ Legend:
 - Command
   - flag
     - description
-<br>
-<br>  
+
 - config
   - --disable-license
     - Disable license finder by default.
