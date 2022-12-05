@@ -22,7 +22,7 @@ EOF
   exit 2
 )
 
-install "$@"
+install_jacked "$@"
 get_arch() {
     a=$(uname -m)
     case ${a} in
@@ -110,7 +110,7 @@ extract() (
   esac
 )
 
-install() {
+install_jacked() {
     # parse flag
     while getopts "v:d:" arg; do
         case "${arg}" in
