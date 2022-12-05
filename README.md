@@ -40,7 +40,7 @@ curl -sSfL https://raw.githubusercontent.com/carbonetes/diggity/main/install.sh 
 
 <details>
 <summary>Here's a sample installation and running the CLI tool.</summary>
-![Download Jacked](material/download.gif)
+![Jacked](material/download.gif)
 </details>
 
 # Getting Started 🚀  
