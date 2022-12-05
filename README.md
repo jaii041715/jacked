@@ -69,7 +69,7 @@ jacked -i <image>
 
 <summary>Jacked Running on a terminal:</summary>
 <p align="center">
-<img src="material/jacked-scan.gif" style="display: block; margin-left: auto; margin-right: auto; width: 30%;">
+<img src="material/jacked-scan.gif" style="display: block; margin-left: auto; margin-right: auto; width: 15%;">
 </p>
 
 ## Output formats
