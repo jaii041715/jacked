@@ -38,12 +38,10 @@ you can specify a release version and destination directory for the installation
 curl -sSfL https://raw.githubusercontent.com/carbonetes/diggity/main/install.sh | sh -s -- -d <DESTINATION_DIR> -v <RELEASE_VERSION>
 ```
 
-<details>
 <summary>Here's a sample installation and running the CLI tool.</summary>
 <p align="center">
-<img src="material/download.gif" style="display: block; margin-left: auto; margin-right: auto; width: 20%;">
+<img src="material/download.gif" style="display: block; margin-left: auto; margin-right: auto; width: 30%;">
 </p>
-</details>
 
 # Getting Started 🚀  
 
