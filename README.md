@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="material/jacked-orig.svg" style="display: block; margin-left: auto; margin-right: auto; width: 55%;">
+<img src="material/jacked-orig.svg" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 </p>
 
 # Jacked
