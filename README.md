@@ -30,6 +30,26 @@ $ git clone https://github.com/carbonetes/jacked
 $ go install .
 ```
 
+## Installation Support OS
+- Mac
+  - darwin_amd64.tar.gz
+  - darwin_arm64.tar.gz
+- Linux
+  - deb
+    - linux_amd64.deb
+    - linux_arm64.deb
+    - linux_ppc64le.deb
+  - rpm
+    - linux_amd64.rpm
+    - linux_arm64.rpm
+	  ⁃ linux_ppc64le.rpm 
+  - tar.gz
+    - linux_amd64.tar.gz
+    - linux_arm64.tar.gz
+    -	linux_ppc64le.tar.gz
+- Windows
+  - windows_amd64.zip
+
 
 ## Choosing another destination path & Install Previous Version 🎲
 you can specify a release version and destination directory for the installation:
