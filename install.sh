@@ -1,170 +1,135 @@
-#!/bin/sh
-set -e
+
+<p align="center">
+<img src="material/jacked-orig.svg" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+</p>
+
+# Jacked
+
+A CLI tool and Go library for scanning image vulnerability. Partner with [Diggity](https://github.com/carbonetes/diggity) for generating a Software Bill of Materials (SBOM) from container images and filesystems .
+
+# Features
+- 🐞 | Scans image vulnerability, check if your image is at risks.
+- 🔧 | Configuration that helps user's preference using the tool.
+- ⛑ | Works with major operating system and many packages.
+- 🗃 | Works seamlessly with [Diggity](https://github.com/carbonetes/diggity) (SBOM Container Image and File System)
+- 🗄 | Convert results to JSON and Tabulated Format.
 
 
-# settings
-owner="jaii041715"
-repo="jacked"
-version=""
-githubUrl="https://github.com"
-executable_folder="./bin"
-format="tar.gz"
+# Installation 📥
+## Recommended
 
-usage() (
-  this=$1
-  cat <<EOF
-$this: download go binaries for carbonetes/jacked
+Install a great way to install a working binary tool to your terminal. 
+```bash
+curl -sSfL https://raw.githubusercontent.com/jaii041715/jacked/main/install.sh | sh -s -- -d /usr/local/bin
+```
+## Build 🏗
 
-Usage: $this [-d] dir [-v] [tag]
-  -d  the installation directory (dDefaults to ./bin)
-  [tag] the specific release to use (if missing, then the latest will be used)
-EOF
-  exit 2
-)
+Go programming language together with the clone repository is needed to run the CLI tool.
+```bash
+$ git clone https://github.com/carbonetes/jacked
+$ go install .
+```
 
-get_arch() {
-    a=$(uname -m)
-    case ${a} in
-        "x86_64" | "amd64" )
-            echo "amd64"
-        ;;
-        "i386" | "i486" | "i586")
-            echo "386"
-        ;;
-        "aarch64" | "arm64" | "arm")
-            echo "arm64"
-        ;;
-        "mips64el")
-            echo "mips64el"
-        ;;
-        "mips64")
-            echo "mips64"
-        ;;
-        "mips")
-            echo "mips"
-        ;;
-        *)
-            echo ${NIL}
-        ;;
-    esac
-}
-get_binary_name() {
-  os="$1"
-  arch="$2"
-  binary="$3"
-  original_binary="${binary}"
 
-  case "$1" in
-    windows) binary="$3.exe" ;;
-  esac
+## Choosing another destination path & Install Previous Version 🎲
+you can specify a release version and destination directory for the installation:
 
-  echo "get_binary_name(os=${os}, arch=${arch}, binary=${original_binary}) returned '${binary}'"
+```
+curl -sSfL https://raw.githubusercontent.com/carbonetes/diggity/main/install.sh | sh -s -- -d <DESTINATION_DIR> -v <RELEASE_VERSION>
+```
 
-  echo "${binary}"
-}
+<details>
+<summary>Here's a sample installation and running the CLI tool.</summary>
 
-get_os(){
-    os=$(uname -s | tr '[:upper:]' '[:lower:]')
-    case "$os" in
-        cygwin_nt*) os="windows" ;;
-        mingw*) os="windows" ;;
-        msys_nt*) os="windows" ;;
-    esac
-    echo "$os"
-}
-get_latest_release() {
-    curl --silent "https://api.github.com/repos/$1/$2/releases/latest" |
-    grep '"tag_name":' |                                           
-    sed -E 's/.*"([^"]+)".*/\1/'                                    
-}
-install_binary() (
+![Jacked](material/download.gif)
 
-  # don't continue if we don't have anything to install
-  if [ -z "$1" ]; then
-      return
-  fi
+</details>
 
-  archive_dir=$(dirname "$1")
+# Getting Started 🚀  
 
-  # unarchive the downloaded archive to the temp dir
-  (cd "${archive_dir}" && extract "$1")
-  # create the destination dir
-  test ! -d "$3" && install -d "$2"
+## Run the CLI tool 🏁
+Once you've successfully installed the Jacked and wanted to scan an image. On your terminal:
+```
+jacked -i <image>
+```
 
-  # install the binary to the destination dir
-  install "${archive_dir}/$3" "$2"
-)
+## Output formats
 
-extract() (
-  archive=$1
-  case "$1" in
-    *.tar.gz | *.tgz) tar --no-same-owner -xzf "$1" ;;
-    *.tar) tar --no-same-owner -xf "$1" ;;
-    *.zip) unzip -q "$1" ;;
-    *.dmg) extract_from_dmg "$1" ;;
-    *)
-      echo "erorr extracting unknown archive format for $1"
-      return 1
-      ;;
-  esac
-)
+The output format for Diggity is configurable as well using the
+`-o` (or `--output`) option:
 
-install_jacked() {
-    # parse flag
-    while getopts "v:d:" arg; do
-        case "${arg}" in
-            d) executable_folder="$OPTARG";;
-            v) version="$OPTARG";;
-        esac
-    done
-    shift $((OPTIND - 1))
-    set +u
+Where the `formats` available are:
+- `table`: A columnar summary (default).
+- `json`: Use this to get as much information out of Jacked.
+## Useful Commands and Flags 🚩
+```
+jacked [command] [flags]
+```
+### Available Commands and their flags with description:
+Legend:
+- Command
+  - flag
+    - description
 
-    
-    downloadFolder=$(mktemp -d -t jacked-XXXXXXXXXX)
-    trap 'rm -rf -- "$downloadFolder"' EXIT
-    mkdir -p ${downloadFolder} # make sure download folder exists
-    os=$(get_os)
-    arch=$(get_arch)
-    # if version is empty
-    if [ -z "$version" ]; then
-        tag=$(get_latest_release ${owner} ${repo})
-        version=${tag}
-    fi
-    
-    # change format to .zip if windows
-    # append .exe if windows
-    final_binary="${repo}"
-    case ${os} in
-     windows) format=zip final_binary="${repo}.exe";;
-    esac
+- config
+  - --disable-license
+    - Disable license finder by default.
+  - --disable-quiet
+    - Disable quiet mode by default.
+  - --disable-secret
+    - Disable secret by default.
+  - --enable-license
+    - Enable license finder by default.
+  - --enable-quiet
+    - Enable quiet mode by default.
+  - --enable-secret
+    - Enable secret by default.
+  - --get-path
+    - Show configuration file path.
+  - --list
+    - List all available configurations.
+  - --reset-default
+    - Reset configurations to default values.
+  - --set-output string
+    - Set default output format (json or table).
+- db
+  - -i
+  - --info
+    - Print database metadata information.
+  - -v
+  - --version
+    - Print database current version.
+- version
+  - -o [string]
+  - --output [string]
+    - format to display results ([text, json]) (default "text")
 
-    # init filename for binary
-    file_name="${repo}_${version#v}_${os}_${arch}.${format}"
-    downloaded_file="${downloadFolder}/${file_name}"
-    asset_uri="${githubUrl}/${owner}/${repo}/releases/download/${version}/${file_name}"
+## Configuration 🚧
+Improve using the tool under your preferences.
+<br>
+Configuration search paths:
+- `<HOME>/.jacked.yaml`
 
-    echo "[1/3] Download ${asset_uri} to tmp folder"
-    rm -f ${downloaded_file}
-    curl --fail --location --output "${downloaded_file}" "${asset_uri}"
+Configuration options (example values are the default):
 
-    echo "[2/3] Install ${repo} to the ${executable_folder}"
+```yaml
+settings:
+  output: table
+  quiet: false
+  license: false
+  secret: false
+ignore:
+  vulnerability:
+    cve: []
+    package: []
+    vendor: []
+    severity: []
+  package:
+    name: []
+    type: []
+    version: []
+```
 
-    install_binary "${downloaded_file}" "${executable_folder}" "${final_binary}"
-    exe=${executable_folder}/${repo}
-    chmod +x ${exe}
+## License
 
-    echo "[3/3] Set environment variables"
-    echo "${repo} was installed successfully to ${exe}"
-    if command -v $repo --version >/dev/null; then
-        echo "Run '$repo --help' to get started"
-    else
-        echo "Manually add the directory to your \$HOME/.bash_profile (or similar)"
-        echo "  export PATH=${executable_folder}:\$PATH"
-        echo "Run '$exe_name --help' to get started"
-    fi
-}
-
-install_jacked "$@"
-
-# exit 0
+[Apache 2.0](https://choosealicense.com/licenses/mit/)
