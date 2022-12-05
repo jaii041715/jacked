@@ -30,7 +30,7 @@ $ git clone https://github.com/carbonetes/jacked
 $ go install .
 ```
 
-## Installation Support OS
+## Installation Support OS 💽
 - Mac
   - darwin_amd64.tar.gz
   - darwin_arm64.tar.gz
