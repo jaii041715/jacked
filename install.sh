@@ -22,7 +22,6 @@ EOF
   exit 2
 )
 
-install_jacked "$@"
 get_arch() {
     a=$(uname -m)
     case ${a} in
@@ -165,5 +164,7 @@ install_jacked() {
         echo "Run '$exe_name --help' to get started"
     fi
 }
+
+install_jacked "$@"
 
 # exit 0
