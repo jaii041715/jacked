@@ -58,11 +58,6 @@ you can specify a release version and destination directory for the installation
 curl -sSfL https://raw.githubusercontent.com/carbonetes/diggity/main/install.sh | sh -s -- -d <DESTINATION_DIR> -v <RELEASE_VERSION>
 ```
 
-<summary>Here's a sample installation and running the CLI tool.</summary>
-<p align="center">
-<img src="material/download.gif" style="display: block; margin-left: auto; margin-right: auto; width: 30%;">
-</p>
-
 # Getting Started 🚀  
 
 ## Run the CLI tool 🏁
@@ -70,6 +65,12 @@ Once you've successfully installed the Jacked and wanted to scan an image. On yo
 ```
 jacked -i <image>
 ```
+
+
+<summary>Jacked Running on a terminal:</summary>
+<p align="center">
+<img src="material/jacked.gif" style="display: block; margin-left: auto; margin-right: auto; width: 30%;">
+</p>
 
 ## Output formats
 
