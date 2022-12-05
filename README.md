@@ -1,83 +1,134 @@
+
 <p align="center">
-<img src="https://user-images.githubusercontent.com/60867540/202974737-11950c32-9ab4-480f-a3da-afebdaf6489c.svg" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+<img src="material/jacked-orig.svg" style="display: block; margin-left: auto; margin-right: auto; width: 55%;">
 </p>
 
 # Jacked
 
-Jacked is a Vulnerability Container Image Scanner.
-- 🧰 | [Install the Binary](https://github.com/jaii041715/jaii041715/blob/main/README.md#Installation)
-- 🗂️ | Works with [Diggity](https://github.com/carbonetes/diggity) (SBOM Container Image and File System) 
+A CLI tool and Go library for scanning image vulnerability. Partner with [Diggity](https://github.com/carbonetes/diggity) for generating a Software Bill of Materials (SBOM) from container images and filesystems .
 
-## Installation
+# Features
+- 🐞 | Scans image vulnerability, check if your image is at risks.
+- 🔧 | Configuration that helps user's preference using the tool.
+- ⛑ | Works with major operating system and many packages.
+- 🗃 | Works seamlessly with [Diggity](https://github.com/carbonetes/diggity) (SBOM Container Image and File System)
+- 🗄 | Convert results to JSON and Tabulated Format.
 
-Copy to clipboard, paste it to the terminal.
 
-``` curl
-curl -sSfL https://raw.githubusercontent.com/jaii041715/jacked/master/install.sh | sh -s -- -b /usr/local/bin
+# Installation 📥
+## Recommended
+
+Install a great way to install a working binary tool to your terminal. 
+```bash
+curl -sSfL https://raw.githubusercontent.com/jaii041715/jacked/main/install.sh | sh -s -- -d /usr/local/bin
 ```
-## Usage
-``` go
- jacked [image]
-```
-- 📥 | Jacked will check if Vulnerability Database exist, download / update action.
-- 🐞 | Jacked will perform a Vulnerability Scan.
- 
-### Output formats
-The output format for Jacked is configurable as well:
+## Build 🏗
 
-``` bash
-jacked [image] -o [format]
+Go programming language together with the clone repository is needed to run the CLI tool.
+```bash
+$ git clone https://github.com/carbonetes/jacked
+$ go install .
 ```
-Where the formats available are:
 
-`table` A columnar summary, specified important details (default).
+
+## Choosing another destination path & Install Previous Version 🎲
+you can specify a release version and destination directory for the installation:
+
+```
+curl -sSfL https://raw.githubusercontent.com/carbonetes/diggity/main/install.sh | sh -s -- -d <DESTINATION_DIR> -v <RELEASE_VERSION>
+```
+
+<details>
+<summary>Here's a sample installation and running the CLI tool.</summary>
+![Download Jacked](material/download.gif)
+</details>
+
+# Getting Started 🚀  
+
+## Run the CLI tool 🏁
+Once you've successfully installed the Jacked and wanted to scan an image. On your terminal:
+```
+jacked -i <image>
+```
+
+## Output formats
+
+The output format for Diggity is configurable as well using the
+`-o` (or `--output`) option:
+
+Where the `formats` available are:
+- `table`: A columnar summary (default).
+- `json`: Use this to get as much information out of Jacked.
+## Useful Commands and Flags 🚩
+```
+jacked [command] [flags]
+```
+### Available Commands and their flags with description:
+Legend:
+- Command
+  - flag
+    - description
 <br>
-`json` Gives you a lot more detailed information in Jacked.
-  
-### Quiet mode
-No UI loader for scanning images and removes unnecessary display that helps you when you're saving a JSON file.
-``` bash
-jacked [image] -q
-```
+<br>  
+- config
+  - --disable-license
+    - Disable license finder by default.
+  - --disable-quiet
+    - Disable quiet mode by default.
+  - --disable-secret
+    - Disable secret by default.
+  - --enable-license
+    - Enable license finder by default.
+  - --enable-quiet
+    - Enable quiet mode by default.
+  - --enable-secret
+    - Enable secret by default.
+  - --get-path
+    - Show configuration file path.
+  - --list
+    - List all available configurations.
+  - --reset-default
+    - Reset configurations to default values.
+  - --set-output string
+    - Set default output format (json or table).
+- db
+  - -i
+  - --info
+    - Print database metadata information.
+  - -v
+  - --version
+    - Print database current version.
+- version
+  - -o [string]
+  - --output [string]
+    - format to display results ([text, json]) (default "text")
 
-### Combine output formats
-Enable quiet mode together with preferred output.
-``` bash
-jacked [image] -q -o [format]
-```
+## Configuration 🚧
+Improve using the tool under your preferences.
+<br>
+Configuration search paths:
+- `<HOME>/.jacked.yaml`
 
-## Configuration
 Configuration options (example values are the default):
-``` yaml
-# the output format of the vulnerability report (options: table, json)
-# same as -o ; table/json output
-# same as -q ; quiet mode
-output:
- quiet: false
- type: "table"
+
+```yaml
+settings:
+  output: table
+  quiet: false
+  license: false
+  secret: false
+ignore:
+  vulnerability:
+    cve: []
+    package: []
+    vendor: []
+    severity: []
+  package:
+    name: []
+    type: []
+    version: []
 ```
 
-## Features
-- Scan the contents of a container image or filesystem to find known vulnerabilities.
-- Find vulnerabilities for major operating system packages:
-- Alpine
-- Amazon Linux
-- BusyBox
-- CentOS
-- Debian
-- Distroless
-- Oracle Linux
-- Red Hat (RHEL)
-- Ubuntu
-- Find vulnerabilities for language-specific packages:
-- Ruby (Gems)
-- Java (JAR, WAR, EAR, JPI, HPI)
-- JavaScript (NPM, Yarn)
-- Python (Egg, Wheel, Poetry, requirements.txt/setup.py files)
-- Dotnet (deps.json)
-- Golang (go.mod)
-- PHP (Composer)
-- Rust (Cargo)
-- Supports Docker, OCI and Singularity image formats.
-- Consume SBOM attestations.
-If you encounter an issue, please let us know using the [issue tracker](https://github.com/jaii041715/jaii041715/edit/main/README.md).
+## License
+
+[Apache 2.0](https://choosealicense.com/licenses/mit/)
