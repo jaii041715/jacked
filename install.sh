@@ -9,6 +9,9 @@ version=""
 githubUrl="https://github.com"
 executable_folder="./bin"
 format="tar.gz"
+download_tag_install=${download_tag_install:-true}
+INSTALL_SH_BASE_URL=https://raw.githubusercontent.com/${owner}/${repo}
+PROGRAM_ARGS=$@
 
 usage() (
   this=$1
@@ -159,11 +162,11 @@ install_jacked() {
     if command -v $repo --version >/dev/null; then
         echo "Run '$repo --help' to get started"
     else
-        echo "Manually add the directory to your \$HOME/.bash_profile (or similar)"
-        echo "  export PATH=${executable_folder}:\$PATH"
+        export PATH=${executable_folder}:\$PATH
         echo "Run '$exe_name --help' to get started"
     fi
 }
+
 
 install_jacked "$@"
 
