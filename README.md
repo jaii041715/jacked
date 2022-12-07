@@ -42,7 +42,7 @@ $ go install .
   - rpm
     - linux_amd64.rpm
     - linux_arm64.rpm
-	  ⁃ linux_ppc64le.rpm 
+    ⁃ linux_ppc64le.rpm 
   - tar.gz
     - linux_amd64.tar.gz
     - linux_arm64.tar.gz
