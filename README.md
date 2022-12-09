@@ -5,26 +5,26 @@
 
 # Jacked
 
-A CLI tool and Go library for scanning image vulnerability. Partner with [Diggity](https://github.com/carbonetes/diggity) for generating a Software Bill of Materials (SBOM) from container images and filesystems .
+A CLI tool and Go library for scanning image vulnerability. Partnered with [Diggity](https://github.com/carbonetes/diggity) for generating a Software Bill of Materials (SBOM) from container images and filesystems.
 
 # Features
-- 🐞 | Scans image vulnerability, check if your image is at risks.
+- 🐞 | Scans image vulnerability; checks if your image is at risk.
 - 🔧 | Configuration that helps user's preference using the tool.
 - ⛑ | Works with major operating system and many packages.
 - 🗃 | Works seamlessly with [Diggity](https://github.com/carbonetes/diggity) (SBOM Container Image and File System)
-- 🗄 | Convert results to JSON and Tabulated Format.
+- 🗄 | Converts results to JSON and Tabulated Format.
 
 
 # Installation 📥
 ## Recommended
 
-Install a great way to install a working binary tool to your terminal. 
+A great way to install a working binary tool on your terminal. 
 ```bash
 curl -sSfL https://raw.githubusercontent.com/jaii041715/jacked/main/install.sh | sh -s -- -d /usr/local/bin
 ```
 ## Build 🏗
 
-Go programming language together with the clone repository is needed to run the CLI tool.
+Go Programming Language together with the cloned repository are needed to run the CLI tool.
 ```bash
 $ git clone https://github.com/carbonetes/jacked
 $ go install .
@@ -42,7 +42,7 @@ $ go install .
   - rpm
     - linux_amd64.rpm
     - linux_arm64.rpm
-    ⁃ linux_ppc64le.rpm
+    - linux_ppc64le.rpm
   - tar.gz
     - linux_amd64.tar.gz
     - linux_arm64.tar.gz
@@ -51,8 +51,8 @@ $ go install .
   - windows_amd64.zip
 
 
-## Choosing another destination path & Install Previous Version 🎲
-you can specify a release version and destination directory for the installation:
+## Choosing another destination path & install previous version 🎲
+You can specify a release version and destination directory for the installation:
 
 ```
 curl -sSfL https://raw.githubusercontent.com/carbonetes/diggity/main/install.sh | sh -s -- -d <DESTINATION_DIR> -v <RELEASE_VERSION>
@@ -61,7 +61,7 @@ curl -sSfL https://raw.githubusercontent.com/carbonetes/diggity/main/install.sh 
 # Getting Started 🚀  
 
 ## Run the CLI tool 🏁
-Once you've successfully installed the Jacked and wanted to scan an image. On your terminal:
+Once you've successfully installed the Jacked and wanted to scan an image, on your terminal:
 ```
 jacked -i <image>
 ```
@@ -77,54 +77,48 @@ jacked -i <image>
 The output format for Diggity is configurable as well using the
 `-o` (or `--output`) option:
 
-Where the `formats` available are:
+The available `formats` are:
 - `table`: A columnar summary (default).
 - `json`: Use this to get as much information out of Jacked.
 ## Useful Commands and Flags 🚩
 ```
-jacked [command] [flags]
+jacked [command] [flag]
 ```
 ### Available Commands and their flags with description:
-Legend:
-- Command
-  - flag
-    - description
 
-- config
-  - --disable-license
-    - Disable license finder by default.
-  - --disable-quiet
-    - Disable quiet mode by default.
-  - --disable-secret
-    - Disable secret by default.
-  - --enable-license
-    - Enable license finder by default.
-  - --enable-quiet
-    - Enable quiet mode by default.
-  - --enable-secret
-    - Enable secret by default.
-  - --get-path
-    - Show configuration file path.
-  - --list
-    - List all available configurations.
-  - --reset-default
-    - Reset configurations to default values.
-  - --set-output string
-    - Set default output format (json or table).
-- db
-  - -i
-  - --info
-    - Print database metadata information.
-  - -v
-  - --version
-    - Print database current version.
-- version
-  - -o [string]
-  - --output [string]
-    - format to display results ([text, json]) (default "text")
+
+```
+jacked config [flag]
+```
+|     Flag      |               Description                |
+| :------------ | :--------------------------------------- |
+| `--disable-license` | Disable license finder by default. |
+| `--disable-quiet` | Disable quiet mode by default.       |
+| `--disable-secret` | Disable secret by default.          |
+| `--enable-license` | Enable license finder by default.   |
+| `--enable-quiet` | Enable quiet mode by default.         |
+| `--enable-secret` | Enable secret by default.            |
+| `--get-path` | Show configuration file path.             |
+| `--list` | List all available configurations.            |
+| `--set-output string` | Set default output format (json or table).|
+
+```
+jacked db [flag]
+```
+|       Flag        |               Description                |
+| :---------------- | :--------------------------------------- |
+| `-i`, `--info`    | Print database metadata information.     |
+| `-v`, `--version` | Print database current version.          |
+
+```
+jacked version [flag] [string]
+```
+|     Flag      |               Description                |
+| :------------ | :--------------------------------------- |
+| `-o` [string], `--output` [string] | format to display results ([text, json]) (default "text") |
 
 ## Configuration 🚧
-Improve using the tool under your preferences.
+Improve using the tool based on your preferences.
 <br>
 Configuration search paths:
 - `<HOME>/.jacked.yaml`
@@ -149,6 +143,6 @@ ignore:
     version: []
 ```
 
-## License 
+## License
 
 [Apache 2.0](https://choosealicense.com/licenses/apache-2.0/)
