@@ -46,6 +46,9 @@ get_arch() {
         "mips")
             echo "mips"
         ;;
+        "ppc64le")
+            echo "ppc64le"
+        ;;
         *)
             echo ${NIL}
         ;;
