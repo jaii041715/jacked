@@ -49,6 +49,9 @@ get_arch() {
         "ppc64le")
             echo "ppc64le"
         ;;
+         "s390x")
+            echo "s390x"
+        ;;
         *)
             echo ${NIL}
         ;;
