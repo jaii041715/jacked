@@ -20,7 +20,7 @@ A CLI tool and Go library for scanning image vulnerability. Partnered with [Digg
 
 A great way to install a working binary tool on your terminal. 
 ```bash
-curl -sSfL https://raw.githubusercontent.com/jaii041715/jacked/main/install.sh | sh -s -- -d /usr/local/bin
+curl -sSfL https://raw.githubusercontent.com/carbonetes/jacked/main/install.sh | sh -s -- -d /usr/local/bin
 ```
 ## Build 🏗
 
@@ -55,7 +55,7 @@ $ go install .
 You can specify a release version and destination directory for the installation:
 
 ```
-curl -sSfL https://raw.githubusercontent.com/carbonetes/diggity/main/install.sh | sh -s -- -d <DESTINATION_DIR> -v <RELEASE_VERSION>
+curl -sSfL https://raw.githubusercontent.com/carbonetes/jacked/main/install.sh | sh -s -- -d <DESTINATION_DIR> -v <RELEASE_VERSION>
 ```
 
 # Getting Started 🚀  
@@ -74,7 +74,7 @@ jacked -i <image>
 
 ## Output formats
 
-The output format for Diggity is configurable as well using the
+The output format for Jacked is configurable as well using the
 `-o` (or `--output`) option:
 
 The available `formats` are:
