@@ -63,7 +63,7 @@ curl -sSfL https://raw.githubusercontent.com/carbonetes/jacked/main/install.sh |
 ## Run the CLI tool 🏁
 Once you've successfully installed the Jacked and wanted to scan an image, on your terminal:
 ```
-jacked -i <image>
+jacked <image>
 ```
 
 
