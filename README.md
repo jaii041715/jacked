@@ -92,15 +92,10 @@ jacked config [flag]
 ```
 |     Flag      |               Description                |
 | :------------ | :--------------------------------------- |
-| `--disable-license` | Disable license finder by default. |
-| `--disable-quiet` | Disable quiet mode by default.       |
-| `--disable-secret` | Disable secret by default.          |
-| `--enable-license` | Enable license finder by default.   |
-| `--enable-quiet` | Enable quiet mode by default.         |
-| `--enable-secret` | Enable secret by default.            |
-| `--get-path` | Show configuration file path.             |
-| `--list` | List all available configurations.            |
-| `--set-output string` | Set default output format (json or table).|
+| `-d`,`--display` | Displays the content of the configuration file. |
+| `-h`,`--help` | Help for config.       |
+| `-p`,`--path` | Display the path of the configuration file.          |
+| `-r`,`--reset` | Restore default configuration file.   |
 
 ```
 jacked db [flag]
@@ -129,8 +124,8 @@ Configuration options (example values are the default):
 settings:
   output: table
   quiet: false
-  license: false
-  secret: false
+  license: true
+  secret: true
 ignore:
   vulnerability:
     cve: []
