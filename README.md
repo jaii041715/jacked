@@ -124,8 +124,8 @@ Configuration options (example values are the default):
 settings:
   output: table
   quiet: false
-  license: true
-  secret: true
+  license: false
+  secret: false
 ignore:
   vulnerability:
     cve: []
